@@ -39,11 +39,12 @@ func main() {
 
 // Init resets all the things
 func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
+	fmt.Println("Init is running " + args[0])
 	if len(args) != 1 {
 		return nil, errors.New("Incorrect number of arguments. Expecting 1")
 	}
 
-	err := stub.PutState("InitUserName", []byte("InitCertification"))
+	err := stub.PutState("InitUser", []byte("InitCert"))
     if err != nil {
         return nil, err
     }
